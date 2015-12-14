@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package pvhn.jv.euler;
+package vn.pvhn.euler;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ import java.util.ArrayList;
  *
  * @author Edison
  */
-public class LargestPrimeFactor {
+public class ID003_LargestPrimeFactor {
     public boolean isPrime(Long num) {
         BigInteger bi;
         try {
-            bi = new BigInteger(Long.toString(num));
+            bi = BigInteger.valueOf(num);
             if (bi.isProbablePrime(1)) {
                 return true;
             } else {
@@ -30,10 +30,10 @@ public class LargestPrimeFactor {
     }
     
     public ArrayList<Long> getFactor(long num) { // Except 1 & itself
-        ArrayList<Long> factorList = new ArrayList<Long>();
+        ArrayList<Long> factorList = new ArrayList<>();
         try {
             for (long i = 2; i <= Math.sqrt(num); i++) {
-                if ((num % i == 0) && ((new BigInteger(Long.toString(i))).isProbablePrime(1))) {
+                if ((num % i == 0) && isPrime(i)) {
                     factorList.add(i);
                 }
             }
@@ -48,11 +48,10 @@ public class LargestPrimeFactor {
         for (Long l : list) {
             System.out.print(l + " ");
         }
-        System.out.println();
     }
     
     public static void main(String[] args) {
-        LargestPrimeFactor lpf = new LargestPrimeFactor();
+        ID003_LargestPrimeFactor lpf = new ID003_LargestPrimeFactor();
         ArrayList<Long> factorList = lpf.getFactor(600851475143L);
         lpf.showArrayList(factorList);
     }
